@@ -10,7 +10,14 @@ public class Main {
         System.out.println("Please enter your pay rate: ");
         double payRate = input.nextDouble();
 
-        double grossPay = hours * payRate;
+        double grossPay;
+        if (hours > 40) {
+            double normPay = 40 * payRate;
+            double overPay = (hours - 40) * payRate * 1.5;
+            grossPay = normPay + overPay;
+        } else {
+            grossPay = hours * payRate;
+        }
         System.out.printf("%s, your gross pay is: $%.2f%n", name, grossPay);
     }
 }
